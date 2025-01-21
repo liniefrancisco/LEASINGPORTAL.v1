@@ -1,4 +1,3 @@
-<<<<<<< HEAD
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -74,53 +73,3 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-=======
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" ng-controller="soacontroller" ng-cloak>
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text"><i class="fas fa-home"></i> <strong>My Dasboard</strong></h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">My Dashboard</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <div class="content">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card rounded-0">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h1 class="m-0 text"></i> <strong>Welcome
-                                            <?php echo $this->session->userdata('trade_name'); ?>
-
-                                        </strong>
-
-                                    </h1><br><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col-md-6 -->
-            </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68

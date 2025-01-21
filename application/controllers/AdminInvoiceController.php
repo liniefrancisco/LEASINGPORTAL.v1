@@ -114,7 +114,6 @@ class AdminInvoiceController extends CI_Controller
             $this->portal->trans_start();
             if (!empty($subsidiary)) {
                 foreach ($subsidiary as $s) {
-<<<<<<< HEAD
                     $d = [
                         'posting_date' => $s['posting_date'],
                         'transaction_date' => $s['transaction_date'],
@@ -145,49 +144,12 @@ class AdminInvoiceController extends CI_Controller
                     ];
     
                     $this->portal->insert('`duxvwc44_agc-pms`.subsidiary_ledger', $d);
-=======
-                    $dups = $this->portal->query("SELECT * FROM `duxvwc44_agc-pms`.subsidiary_ledger WHERE doc_no = '".$s['doc_no']."'")->ROW();
-                    if(empty($dups)){
-                        $d = [
-                            'posting_date' => $s['posting_date'],
-                            'transaction_date' => $s['transaction_date'],
-                            'due_date' => $s['due_date'],
-                            'document_type' => $s['document_type'],
-                            'ref_no' => $s['ref_no'],
-                            'doc_no' => $s['doc_no'],
-                            'cas_doc_no' => $s['cas_doc_no'],
-                            'tenant_id' => $s['tenant_id'],
-                            'gl_accountID' => $s['gl_accountID'],
-                            'company_code' => $s['company_code'],
-                            'department_code' => $s['department_code'],
-                            'debit' => $s['debit'],
-                            'credit' => $s['credit'],
-                            'bank_name' => $s['bank_name'],
-                            'bank_code' => $s['bank_code'],
-                            'tag' => $s['tag'],
-                            'status' => $s['status'],
-                            'with_penalty' => $s['with_penalty'],
-                            'prepared_by' => $s['prepared_by'],
-                            'ft_ref' => $s['ft_ref'],
-                            'export_batch_code' => $s['export_batch_code'],
-                            'export_batch_internal' => $s['export_batch_internal'],
-                            'adj_tag' => $s['adj_tag'],
-                            'adj_ref' => $s['adj_ref'],
-                            'upload_status' => $s['upload_status'],
-                            'upload_date' => $s['upload_date'],
-                        ];
-
-                        $this->portal->insert('`duxvwc44_agc-pms`.subsidiary_ledger', $d);
-
-                    }
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
                 }
 
                 $cnt += 1;
 
                 if(!empty($ledger)){
                     foreach ($ledger as $l) {
-<<<<<<< HEAD
                         $led = [
                             'posting_date'     => $l['posting_date'],
                             'transaction_date' => $l['transaction_date'],
@@ -211,35 +173,6 @@ class AdminInvoiceController extends CI_Controller
                             'upload_date'      => $l['upload_date'],
                         ];
                         $this->portal->insert('`duxvwc44_agc-pms`.ledger', $led);
-=======
-                        $dups1 = $this->portal->query("SELECT * FROM `duxvwc44_agc-pms`.ledger WHERE doc_no = '" . $l['doc_no'] . "'")->ROW();
-                        if(empty($dups1)){
-                            $led = [
-                                'posting_date' => $l['posting_date'],
-                                'transaction_date' => $l['transaction_date'],
-                                'document_type' => $l['document_type'],
-                                'ref_no' => $l['ref_no'],
-                                'doc_no' => $l['doc_no'],
-                                'tenant_id' => $l['tenant_id'],
-                                'contract_no' => $l['contract_no'],
-                                'description' => $l['description'],
-                                'debit' => $l['debit'],
-                                'credit' => $l['credit'],
-                                'balance' => $l['balance'],
-                                'due_date' => $l['due_date'],
-                                'charges_type' => $l['charges_type'],
-                                'with_penalty' => $l['with_penalty'],
-                                'bank_name' => $l['bank_name'],
-                                'bank_code' => $l['bank_code'],
-                                'flag' => $l['flag'],
-                                'prepared_by' => $l['prepared_by'],
-                                'upload_status' => $l['upload_status'],
-                                'upload_date' => $l['upload_date'],
-                            ];
-                            $this->portal->insert('`duxvwc44_agc-pms`.ledger', $led);
-
-                        }
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
                     }
     
                     $cnt += 1;
@@ -247,7 +180,6 @@ class AdminInvoiceController extends CI_Controller
     
                 if(!empty($invoice)){
                     foreach ($invoice as $i) {
-<<<<<<< HEAD
                         $inv = [
                             'tenant_id' => $i['tenant_id'],
                             'contract_no' => $i['contract_no'],
@@ -281,45 +213,6 @@ class AdminInvoiceController extends CI_Controller
                         ];
                         $this->portal->insert('`duxvwc44_agc-pms`.invoicing', $inv);
                         // var_dump($this->portal->error());
-=======
-                        $dups3 = $this->portal->query("SELECT * FROM `duxvwc44_agc-pms`.invoicing WHERE doc_no = '" . $i['doc_no'] . "'")->ROW();
-                        if(empty($dups3)){
-                            $inv = [
-                                'tenant_id' => $i['tenant_id'],
-                                'contract_no' => $i['contract_no'],
-                                'trade_name' => $i['trade_name'],
-                                'doc_no' => $i['doc_no'],
-                                'posting_date' => $i['posting_date'],
-                                'transaction_date' => $i['transaction_date'],
-                                'due_date' => $i['due_date'],
-                                'charges_type' => $i['charges_type'],
-                                'charges_code' => $i['charges_code'],
-                                'description' => $i['description'],
-                                'uom' => $i['uom'],
-                                'prev_reading' => $i['prev_reading'],
-                                'curr_reading' => $i['curr_reading'],
-                                'unit_price' => $i['unit_price'],
-                                'total_unit' => $i['total_unit'],
-                                'expected_amt' => $i['expected_amt'],
-                                'actual_amt' => $i['actual_amt'],
-                                'balance' => $i['balance'],
-                                'total_gross' => $i['total_gross'],
-                                'store_code' => $i['store_code'],
-                                'flag' => $i['flag'],
-                                'tag' => $i['tag'],
-                                'with_penalty' => $i['with_penalty'],
-                                'status' => $i['status'],
-                                'receipt_no' => $i['receipt_no'],
-                                'days_in_month' => $i['days_in_month'],
-                                'days_occupied' => $i['days_occupied'],
-                                'upload_status' => $i['upload_status'],
-                                'upload_date' => $i['upload_date'],
-                            ];
-                            $this->portal->insert('`duxvwc44_agc-pms`.invoicing', $inv);
-                            // var_dump($this->portal->error());
-
-                        }
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
                     }
     
                     $cnt += 1;
@@ -332,7 +225,6 @@ class AdminInvoiceController extends CI_Controller
                 }else{
                     $this->db->trans_start();
     
-<<<<<<< HEAD
                     if(isset($subsidiary)){
                         foreach ($subsidiary as $value) {
                             $this->db->where('id', $value['id'])
@@ -352,40 +244,6 @@ class AdminInvoiceController extends CI_Controller
                             $this->db->where('id', $value['id'])
                                     ->update('invoicing', $update);
                         }
-=======
-                    if($tenantFrom === 'Internal'){
-                        foreach ($subsidiary as $value) {
-                            $this->db->where('id', $value['id'])
-                                ->update('subsidiary_ledger', $update);
-                        }
-
-                        foreach ($ledger as $value) {
-                            $this->db->where('id', $value['id'])
-                                ->update('ledger', $update);
-                        }
-
-                        foreach ($invoice as $value) {
-                            $this->db->where('id', $value['id'])
-                                ->update('invoicing', $update);
-                        }
-
-                    }else{
-                        foreach ($subsidiary as $value) {
-                            $this->cas->where('id', $value['id'])
-                                ->update('subsidiary_ledger', $update);
-                        }
-
-                        foreach ($ledger as $value) {
-                            $this->cas->where('id', $value['id'])
-                                ->update('ledger', $update);
-                        }
-
-                        foreach ($invoice as $value) {
-                            $this->cas->where('id', $value['id'])
-                                ->update('invoicing', $update);
-                        }
-
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
                     }
     
                     $this->db->trans_complete();

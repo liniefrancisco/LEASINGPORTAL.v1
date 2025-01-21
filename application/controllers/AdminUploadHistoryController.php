@@ -37,11 +37,6 @@ class AdminUploadHistoryController extends CI_Controller
     # TABLE OF CONTENTS
     # PORTAL INDEX FUNCTION
 
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
     function sanitize($string)
     {
         $string = htmlentities($string, ENT_QUOTES, 'UTF-8');
@@ -63,7 +58,6 @@ class AdminUploadHistoryController extends CI_Controller
         $date1 = $this->input->post('date1');
         $date2 = $this->input->post('date2');
 
-<<<<<<< HEAD
         $history = $this->adminmodel->gethistory($store, $date1, $date2);
 
         JSONResponse($history);
@@ -76,20 +70,13 @@ class AdminUploadHistoryController extends CI_Controller
         $date2 = $this->input->post('date2');
 
         $history = $this->adminmodel->gethistory($store, $date1, $date2);
-=======
-        $history  = $this->adminmodel->gethistory($store, $date1, $date2);
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 
         JSONResponse($history);
     }
 
     public function gethistorydocs()
     {
-<<<<<<< HEAD
         $historyID = $this->input->post('historyID');
-=======
-        $historyID   = $this->input->post('historyID');
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
         $historyDocs = $this->adminmodel->getHistoryDocs($historyID);
         JSONResponse($historyDocs);
     }

@@ -43,10 +43,6 @@ $route['sendMail']             = "maincontroller/sendMail";
 $route['notifications']        = "portmaincontrolleral/notifications";
 $route['uploadAllInvoiceData'] = "maincontroller/uploadAllInvoiceData";
 $route['uploadPaymentData']    = "maincontroller/uploadPaymentData";
-<<<<<<< HEAD
-=======
-$route['uploadPaymentFile']    = "maincontroller/uploadPaymentFile";
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 
 # PAYMENT
 $route['paymentNotification'] = "maincontroller/paymentNotification";

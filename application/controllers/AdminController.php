@@ -37,11 +37,6 @@ class AdminController extends CI_Controller
     # TABLE OF CONTENTS
     # PORTAL INDEX FUNCTION
 
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
     function sanitize($string)
     {
         $string = htmlentities($string, ENT_QUOTES, 'UTF-8');
@@ -60,182 +55,97 @@ class AdminController extends CI_Controller
     public function admindashboard()
     {
         if ($this->session->userdata('portal_logged_in')) {
-<<<<<<< HEAD
             $data['title'] = 'Admin Dashboard';
             $data['status'] = 'admindashboard';
-=======
-            $data['title']        = 'Admin Dashboard';
-            $data['status']       = 'admindashboard';
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             $data['current_date'] = $this->_currentDate;
 
             $this->load->view('leasingportal/AdminHeader', $data);
             $this->load->view('leasingportal/AdminDashboard');
             $this->load->view('leasingportal/AdminFooter');
-<<<<<<< HEAD
         } else {
-=======
-        }
-        else
-        {
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             $this->load->view('leasingportal/Login');
         }
     }
 
     public function admininvoicepertenant()
     {
-<<<<<<< HEAD
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Invoice Upload';
             $data['status'] = 'admininvoiceupload';
-=======
-        if ($this->session->userdata('portal_logged_in')) 
-        {
-            $data['title']        = 'Admin Invoice Upload';
-            $data['status']       = 'admininvoiceupload';
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             $data['current_date'] = $this->_currentDate;
 
             $this->load->view('leasingportal/AdminHeader', $data);
             $this->load->view('leasingportal/AdminInvoicePerTenant');
             $this->load->view('leasingportal/AdminFooter');
-<<<<<<< HEAD
         } else {
-=======
-        }
-        else
-        {
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             $this->load->view('leasingportal/Login');
         }
     }
 
     public function adminsoa()
     {
-<<<<<<< HEAD
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin SOA Upload';
             $data['status'] = 'adminsoaupload';
             $data['current_date'] = $this->_currentDate;
 
-=======
-        if ($this->session->userdata('portal_logged_in')) 
-        {
-            $data['title']        = 'Admin SOA Upload';
-            $data['status']       = 'adminsoaupload';
-            $data['current_date'] = $this->_currentDate;
-            
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 
             $this->load->view('leasingportal/AdminHeader', $data);
             $this->load->view('leasingportal/AdminSOA');
             $this->load->view('leasingportal/AdminFooter');
-<<<<<<< HEAD
         } else {
-=======
-        }
-        else
-        {
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             $this->load->view('leasingportal/Login');
         }
     }
 
     public function paymentpertenant()
     {
-<<<<<<< HEAD
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Payment Upload';
             $data['status'] = 'adminpaymentupload';
             $data['current_date'] = $this->_currentDate;
 
-=======
-        if ($this->session->userdata('portal_logged_in')) 
-        {
-            $data['title']        = 'Admin Payment Upload';
-            $data['status']       = 'adminpaymentupload';
-            $data['current_date'] = $this->_currentDate;
-            
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 
             $this->load->view('leasingportal/AdminHeader', $data);
             $this->load->view('leasingportal/AdminPaymentPerTenant');
             $this->load->view('leasingportal/AdminFooter');
-<<<<<<< HEAD
         } else {
-=======
-        }
-        else
-        {
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             $this->load->view('leasingportal/Login');
         }
     }
 
     public function paymentperstore()
     {
-<<<<<<< HEAD
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Payment Upload';
             $data['status'] = 'adminpaymentupload';
             $data['current_date'] = $this->_currentDate;
 
-=======
-        if ($this->session->userdata('portal_logged_in')) 
-        {
-            $data['title']        = 'Admin Payment Upload';
-            $data['status']       = 'adminpaymentupload';
-            $data['current_date'] = $this->_currentDate;
-            
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 
             $this->load->view('leasingportal/AdminHeader', $data);
             $this->load->view('leasingportal/AdminPaymentPerStore');
             $this->load->view('leasingportal/AdminFooter');
-<<<<<<< HEAD
         } else {
-=======
-        }
-        else
-        {
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             $this->load->view('leasingportal/Login');
         }
     }
 
     public function uploadinghistory()
     {
-<<<<<<< HEAD
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Uploading History';
             $data['status'] = 'adminuploadinghistory';
             $data['current_date'] = $this->_currentDate;
 
-=======
-        if ($this->session->userdata('portal_logged_in')) 
-        {
-            $data['title']        = 'Admin Uploading History';
-            $data['status']       = 'adminuploadinghistory';
-            $data['current_date'] = $this->_currentDate;
-            
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 
             $this->load->view('leasingportal/AdminHeader', $data);
             $this->load->view('leasingportal/AdminUploadHistory');
             $this->load->view('leasingportal/AdminFooter');
-<<<<<<< HEAD
         } else {
-=======
-        }
-        else
-        {
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             $this->load->view('leasingportal/Login');
         }
     }
 
-<<<<<<< HEAD
 
     public function paymentnotices()
     {
@@ -244,114 +154,58 @@ class AdminController extends CI_Controller
             $data['status'] = 'adminupaymentadvice';
             $data['current_date'] = $this->_currentDate;
 
-=======
-    public function paymentnotices()
-    {
-        if ($this->session->userdata('portal_logged_in')) 
-        {
-            $data['title']        = 'Admin Payment Advice';
-            $data['status']       = 'adminupaymentadvice';
-            $data['current_date'] = $this->_currentDate;
-            
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 
             $this->load->view('leasingportal/AdminHeader', $data);
             $this->load->view('leasingportal/AdminPaymentAdvice');
             $this->load->view('leasingportal/AdminFooter');
-<<<<<<< HEAD
         } else {
-=======
-        }
-        else
-        {
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             $this->load->view('leasingportal/Login');
         }
     }
 
     public function paymentnoticeshistory()
     {
-<<<<<<< HEAD
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Payment Advice History';
             $data['status'] = 'adminupaymentadvicehistory';
             $data['current_date'] = $this->_currentDate;
 
-=======
-        if ($this->session->userdata('portal_logged_in')) 
-        {
-            $data['title']        = 'Admin Payment Advice History';
-            $data['status']       = 'adminupaymentadvicehistory';
-            $data['current_date'] = $this->_currentDate;
-            
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 
             $this->load->view('leasingportal/AdminHeader', $data);
             $this->load->view('leasingportal/AdminPaymentAdviceHistory');
             $this->load->view('leasingportal/AdminFooter');
-<<<<<<< HEAD
         } else {
-=======
-        }
-        else
-        {
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             $this->load->view('leasingportal/Login');
         }
     }
 
     public function adminusers()
     {
-<<<<<<< HEAD
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Users';
             $data['status'] = 'adminusers';
             $data['current_date'] = $this->_currentDate;
 
-=======
-        if ($this->session->userdata('portal_logged_in')) 
-        {
-            $data['title']        = 'Admin Users';
-            $data['status']       = 'adminusers';
-            $data['current_date'] = $this->_currentDate;
-            
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 
             $this->load->view('leasingportal/AdminHeader', $data);
             $this->load->view('leasingportal/AdminUser');
             $this->load->view('leasingportal/AdminFooter');
-<<<<<<< HEAD
         } else {
-=======
-        }
-        else
-        {
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             $this->load->view('leasingportal/Login');
         }
     }
 
     public function blastUser()
     {
-<<<<<<< HEAD
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Blast';
             $data['status'] = 'adminblast';
             $data['current_date'] = $this->_currentDate;
 
-=======
-        if ($this->session->userdata('portal_logged_in')) 
-        {
-            $data['title']        = 'Admin Blast';
-            $data['status']       = 'adminblast';
-            $data['current_date'] = $this->_currentDate;
-            
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 
             $this->load->view('leasingportal/AdminHeader', $data);
             $this->load->view('leasingportal/AdminBlast');
             $this->load->view('leasingportal/AdminFooter');
-<<<<<<< HEAD
         } else {
             $this->load->view('leasingportal/Login');
         }
@@ -372,12 +226,3 @@ class AdminController extends CI_Controller
         }
     }
 }
-=======
-        }
-        else
-        {
-            $this->load->view('leasingportal/Login');
-        }
-    }
-}
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68

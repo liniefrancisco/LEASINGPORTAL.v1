@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-
-=======
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Leasing Portal | Log in</title>
     <link rel="icon" href="<?php echo base_url()?>img/LeasingPortalLogo.png">
-<<<<<<< HEAD
-
-=======
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -25,69 +17,35 @@
 </head>
 
 <body class="hold-transition login-page">
-<<<<<<< HEAD
-=======
     <div class="jumbotron jumbotron_leasing"></div>
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
     <div class="login-box">
         <div class="card">
             <div class="card-header text-center">
                 <img class="profile-img" src="<?php echo base_url(); ?>img/AGC-Leasing-portal.png" alt="" style="width: 200px; height: 120px;">
             </div>
             <div class="card-body login-card-body">
-<<<<<<< HEAD
-                <!-- <img class="profile-img" src="<?php echo base_url(); ?>img/AGC-Leasing-portal.png" alt=""> -->
-=======
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
                 <p class="login-box-msg">Login in to start your session</p>
 
                 <form method="post" id="loginform">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="username" placeholder="Username" required autocomplete="off">
                         <div class="input-group-append">
-<<<<<<< HEAD
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
-                            </div>
-=======
                             <div class="input-group-text"><span class="fas fa-user"></span></div>
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
                         </div>
                     </div>
                     <div class="input-group mb-3">
                         <input type="password" class="form-control" name="password" placeholder="Password" required autocomplete="off">
                         <div class="input-group-append">
-<<<<<<< HEAD
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <!-- <div class="icheck-primary">
-=======
                             <div class="input-group-text"><span class="fas fa-lock"></span></div>
                         </div>
                     </div>
                     <!-- <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
                                 <input type="checkbox" id="remember">
                                 <label for="remember">
                                     Remember Me
                                 </label>
-<<<<<<< HEAD
-                            </div> -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Log In</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-=======
                             </div>
                         </div>
                     </div> -->
@@ -99,7 +57,6 @@
                         <span class="clearfix"></span>  
                     </div>
                     
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
                 </form>
 
                 <!-- <p class="mb-1">
