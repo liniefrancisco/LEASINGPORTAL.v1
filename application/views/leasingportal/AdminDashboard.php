@@ -1,0 +1,121 @@
+<<<<<<< HEAD
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <strong>Dashboard</strong>
+                            </h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item">
+                                    <a href="#">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active">Dashboard</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card rounded-0">
+                                <div class="card-body">
+                                    <h3><b>CONTENTS</b></h3>
+                                    <ul>
+                                        <li>Uploading</li>
+                                        <ul>
+                                            <li>Invoice</li>
+                                            <li>SOA</li>
+                                            <li>Payment</li>
+                                        </ul>
+                                        <li>Reports</li>
+                                        <ul>
+                                            <li>Upload History</li>
+                                        </ul>
+                                        <?php if($this->session->userdata('user_type') == 'Admin'):?>
+                                            <li>Users</li>
+                                        <?php endif;?>
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+
+</div>
+        <!-- /.content-wrapper -->
+=======
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <strong>Dashboard</strong>
+                    </h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card rounded-0">
+                        <div class="card-body">
+                            <h3><b>CONTENTS</b></h3>
+                            <ul>
+                                <li>Uploading</li>
+                                <ul>
+                                    <li>Invoice</li>
+                                    <li>SOA</li>
+                                    <li>Payment</li>
+                                </ul>
+                                <li>Reports</li>
+                                <ul>
+                                    <li>Upload History</li>
+                                </ul>
+                                <?php if ($this->session->userdata('user_type') == 'Admin'): ?>
+                                    <li>Users</li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-md-6 -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+        <div class="alert alert-info fade show container " role="alert" style="margin-top:-5px;">
+            <strong>Note:</strong> Please request to delete if wrong SOA uploaded!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    <!-- /.content -->
+
+</div>
+<!-- /.content-wrapper -->
+>>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
