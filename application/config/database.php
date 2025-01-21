@@ -103,12 +103,8 @@ $db['default']['hostname'] = '172.16.161.37';
 $db['default']['port']     = '3306';
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'itprog2013';
-<<<<<<< HEAD
 $db['default']['database'] = 'agc-pms';
-=======
-// $db['default']['database'] = 'agc-pms';
 $db['default']['database'] = 'my-agc-pms';
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -125,12 +121,7 @@ $db['cas']['hostname'] = '172.16.170.10';
 $db['cas']['port']     = '3306';
 $db['cas']['username'] = 'leasing';
 $db['cas']['password'] = 'leasing2023';
-<<<<<<< HEAD
 $db['cas']['database'] = 'agc-pms-cas';
-=======
-// $db['cas']['database'] = 'agc-pms-cas';
-$db['cas']['database'] = 'my-agc-pms-cas';
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 $db['cas']['dbdriver'] = 'mysqli';
 $db['cas']['dbprefix'] = '';
 $db['cas']['pconnect'] = TRUE;
@@ -144,20 +135,10 @@ $db['cas']['autoinit'] = TRUE;
 $db['cas']['stricton'] = FALSE;
 
 #HOSTGATOR
-<<<<<<< HEAD
 $db['portal']['hostname'] = '50.116.94.177';
 $db['portal']['port']     = '3306';
 $db['portal']['username'] = 'duxvwc44_agc-pms';
 $db['portal']['password'] = '+AgIKfdyaC0d';
-=======
-// $db['portal']['hostname'] = '50.116.94.177';
-$db['portal']['hostname'] = '172.16.161.37';
-$db['portal']['port']     = '3306';
-// $db['portal']['username'] = 'duxvwc44_agc-pms';
-// $db['portal']['password'] = '+AgIKfdyaC0d';
-$db['portal']['username'] = 'root';
-$db['portal']['password'] = 'itprog2013';
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 $db['portal']['database'] = 'duxvwc44_agc-pms';
 $db['portal']['dbdriver'] = 'mysqli';
 $db['portal']['dbprefix'] = '';
@@ -170,7 +151,3 @@ $db['portal']['dbcollat'] = 'utf8_general_ci';
 $db['portal']['swap_pre'] = '';
 $db['portal']['autoinit'] = TRUE;
 $db['portal']['stricton'] = FALSE;
-<<<<<<< HEAD
-=======
-
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
