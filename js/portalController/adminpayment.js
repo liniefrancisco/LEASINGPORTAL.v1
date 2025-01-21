@@ -4,7 +4,6 @@ window.myApp.controller('adminpayment', function($scope, $http, $compile) {
     var pertenant = '';
     var perstore  = '';
 
-<<<<<<< HEAD
 	// $scope.getenants = function()
 	// {
 	// 	let store = $scope.store;
@@ -37,40 +36,6 @@ window.myApp.controller('adminpayment', function($scope, $http, $compile) {
             $scope.tenants = response.data;
             console.log($scope.tenants);
         });
-=======
-    $scope.searchTenant = function () {
-        let url = `${$base_url}admingettenant`;
-        let store = $scope.store;
-        let from = $scope.tenant_from;
-        let type = $scope.tenanttype;
-        let string = $scope.trade_name;
-        let data = { store: store, from: from, type: type, trade_name: string };
-
-        if (string == "" || string == undefined) {
-            $(".search-results").hide();
-        } else {
-            $.get(url, data, function (res) {
-                $scope.tenants = res;
-                if ($scope.tenants) {
-                    $scope.hasResults = 1;
-                    $scope.tenants = res;
-                } else {
-                    $scope.hasResults = 0;
-                    $scope.tenants.push({ trade_name: "No Results Found" });
-                }
-
-                $scope.$apply();
-            }, 'json');
-        }
-    }
-
-    $scope.getTenantID = function (data) {
-        $scope.trade_name = data.trade_name;
-        $scope.tenant_id = data.tenant_id;
-        $("#supplier_id").val(data.id);
-        $(".search-results").hide();
-    }
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
 
     $scope.getpayment = function()
     {

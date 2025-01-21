@@ -2,12 +2,7 @@ window.myApp.controller('adminsoa', function($scope, $http, $compile) {
 
 	var loader = null;
 
-<<<<<<< HEAD
 	$scope.getsoa = function(e){
-=======
-	$scope.getsoa = function(e)
-	{
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
         let tenanttype = $scope.tenanttype;
         let store      = $scope.store;
         let from       = $scope.from;
@@ -21,12 +16,7 @@ window.myApp.controller('adminsoa', function($scope, $http, $compile) {
             method: 'POST',
             url: `${$base_url}getsoa`,
             data: $.param({type : tenanttype, store: store, from: from, date1: date1, date2: date2})
-<<<<<<< HEAD
         }).then(function successCallback(response){
-=======
-        }).then(function successCallback(response) 
-        {
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             $('#loading').hide();
             if (response.data.length > 0) {
                 if (!$.fn.dataTable.isDataTable('#soauploadtable')) { // Check if DataTable is not already initialized
@@ -37,15 +27,9 @@ window.myApp.controller('adminsoa', function($scope, $http, $compile) {
                     });
                 }
             
-<<<<<<< HEAD
                 $scope.soauploadtable   = true;
                 $scope.soaupload        = true;
                 $scope.soa              = response.data;
-=======
-                $scope.soauploadtable = true;
-                $scope.soaupload = true;
-                $scope.soa = response.data;
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             } else {
                 Swal.fire({
                     title: `<i class='fas fa-info-circle fa-lg' style='color:#005ce6'></i>`,
@@ -54,22 +38,9 @@ window.myApp.controller('adminsoa', function($scope, $http, $compile) {
                     confirmButtonText: 'OK'
                 });
             
-<<<<<<< HEAD
                 $scope.soauploadtable   = true;
                 $scope.soaupload        = false;
             }   
-=======
-                $scope.soauploadtable = true;
-                $scope.soaupload = false;
-            }
-            
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
-        });
-	}
-
-    $scope.viewsoa = function(data)
-    {
-        let filename = data.file_name
         let from     = $scope.from;
         let web_ip = (from === 'OLD') ? '172.16.161.37/agc-pms' : '172.16.170.10/PMS/';
         window.open(`http://${web_ip}/assets/pdf/${filename}`);
