@@ -98,13 +98,14 @@ $query_builder = TRUE;
 // $active_group = 'default';
 // $active_record = TRUE;
 
-// // ============ LIVE SERVER
-$db['default']['hostname'] = '172.16.161.37';
+#LOCAL SERVER
+// $db['default']['hostname'] = '172.16.161.37';
+// $db['default']['password'] = 'itprog2013';
+$db['default']['hostname'] = 'localhost';
 $db['default']['port']     = '3306';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'itprog2013';
-// $db['default']['database'] = 'agc-pms';
-$db['default']['database'] = 'my-agc-pms';
+$db['default']['password'] = '';
+$db['default']['database'] = 'agc-pms';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -116,13 +117,15 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
-
-$db['cas']['hostname'] = '172.16.170.10';
+#CAS SERVER
+// $db['cas']['hostname'] = '172.16.170.10';
+// $db['cas']['username'] = 'leasing';
+// $db['cas']['password'] = 'leasing2023';
+$db['cas']['hostname'] = 'localhost';
 $db['cas']['port']     = '3306';
-$db['cas']['username'] = 'leasing';
-$db['cas']['password'] = 'leasing2023';
-// $db['cas']['database'] = 'agc-pms-cas';
-$db['cas']['database'] = 'my-agc-pms-cas';
+$db['cas']['username'] = 'root';
+$db['cas']['password'] = '';
+$db['cas']['database'] = 'agc-pms-cas';
 $db['cas']['dbdriver'] = 'mysqli';
 $db['cas']['dbprefix'] = '';
 $db['cas']['pconnect'] = TRUE;
@@ -134,17 +137,15 @@ $db['cas']['dbcollat'] = 'utf8_general_ci';
 $db['cas']['swap_pre'] = '';
 $db['cas']['autoinit'] = TRUE;
 $db['cas']['stricton'] = FALSE;
-
 #HOSTGATOR
 // $db['portal']['hostname'] = '50.116.94.177';
-$db['portal']['hostname'] = '172.16.161.37';
-$db['portal']['port']     = '3306';
 // $db['portal']['username'] = 'duxvwc44_agc-pms';
 // $db['portal']['password'] = '+AgIKfdyaC0d';
+$db['portal']['hostname'] = 'localhost';
+$db['portal']['port']     = '3306';
 $db['portal']['username'] = 'root';
-$db['portal']['password'] = 'itprog2013';
-// $db['portal']['database'] = 'duxvwc44_agc-pms';
-$db['portal']['database'] = 'my-duxvwc44_agc-pms';
+$db['portal']['password'] = '';
+$db['portal']['database'] = 'duxvwc44_agc-pms';
 $db['portal']['dbdriver'] = 'mysqli';
 $db['portal']['dbprefix'] = '';
 $db['portal']['pconnect'] = TRUE;

@@ -182,7 +182,6 @@ window.myApp.controller('adminpayment', function($scope, $http, $compile) {
                          text: response.message
                     }).then((result) => { 
 
-<<<<<<< HEAD
                         if(pertenant == true)
                         {
                             $scope.paymentupload = false;
@@ -193,18 +192,6 @@ window.myApp.controller('adminpayment', function($scope, $http, $compile) {
                             $scope.paymentupload = false;
                             $scope.getpaymentperstore();
                         }                   
-=======
-                        // if(pertenant == true)
-                        // {
-                        //     $scope.paymentupload = false;
-                        //     $scope.getpayment();
-                        // }   
-                        // else if(perstore == true) 
-                        // {
-                        //     $scope.paymentupload = false;
-                        //     $scope.getpaymentperstore();
-                        // }                   
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
                     });
                 }
                 else
@@ -232,23 +219,14 @@ window.myApp.controller('adminpayment', function($scope, $http, $compile) {
         });
     }
 
-<<<<<<< HEAD
-	$scope.uploadpaymentselected = function(e)
-    {
-=======
 	$scope.uploadpaymentselected = function(e){
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
         e.preventDefault();
 
         let formdata = new FormData(e.target);
 
         $.ajax({
             type: 'POST',
-<<<<<<< HEAD
             url: `${$base_url}uploadpaymentdatachecked`,
-=======
-            url: `${$base_url}uploadpaymentpertenant`,
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
             data: formdata,
             enctype: 'multipart/form-data',
             async: true,
@@ -270,7 +248,6 @@ window.myApp.controller('adminpayment', function($scope, $http, $compile) {
                          title: 'Success',
                          text: response.message
                     }).then((result) => {
-<<<<<<< HEAD
                         if(pertenant == true)
                         {
                             $scope.paymentupload = false;
@@ -281,9 +258,6 @@ window.myApp.controller('adminpayment', function($scope, $http, $compile) {
                             $scope.paymentupload = false;
                             $scope.getpaymentperstore();
                         }              
-=======
-                        location.reload();             
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68
                     });
                 }
                 else
@@ -311,9 +285,5 @@ window.myApp.controller('adminpayment', function($scope, $http, $compile) {
         });
     }
 
-<<<<<<< HEAD
 }
 });
-=======
-})
->>>>>>> eeae2af07a0576f503f3a1d47c6cd26368265e68

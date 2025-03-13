@@ -180,8 +180,7 @@ class AdminModel extends CI_model
         WHERE tenant_id = '$tenant_id' AND `upload_status` IS NULL OR `upload_status` = '' AND `posting_date` BETWEEN '$startDate' AND '$endDate'")->RESULT_ARRAY();
     }
 
-    public function get_soa($tenant_type, $start, $end, $from = null)
-    {
+    public function get_soa($tenant_type, $start, $end, $from = null){
         $type = ($from === 'OLD') ? 'db' : 'cas';
 
         $sql = "SELECT 
@@ -195,14 +194,11 @@ class AdminModel extends CI_model
                 AND s.posting_date BETWEEN '$start' AND '$end'
                 GROUP BY s.soa_no";
 
-        // $query  = ($from === 'OLD') ? $this->db : $this->cas;
         $result = $this->{$type}->QUERY($sql)->RESULT_ARRAY();
-
         return $result;
     }
 
-    public function getSOAFile($id, $from = null)
-    {
+    public function getSOAFile($id, $from = null){
         $type = ($from === 'OLD') ? 'db' : 'cas';
 
         $result = $this->{$type}->SELECT('*')

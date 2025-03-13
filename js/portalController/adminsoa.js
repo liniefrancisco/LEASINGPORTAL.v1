@@ -1,7 +1,5 @@
 window.myApp.controller('adminsoa', function($scope, $http, $compile) {
-
 	var loader = null;
-
 	$scope.getsoa = function(e){
         let tenanttype = $scope.tenanttype;
         let store      = $scope.store;
@@ -26,7 +24,6 @@ window.myApp.controller('adminsoa', function($scope, $http, $compile) {
                         });
                     });
                 }
-            
                 $scope.soauploadtable   = true;
                 $scope.soaupload        = true;
                 $scope.soa              = response.data;
@@ -37,63 +34,53 @@ window.myApp.controller('adminsoa', function($scope, $http, $compile) {
                     allowOutsideClick: false,
                     confirmButtonText: 'OK'
                 });
-            
                 $scope.soauploadtable   = true;
                 $scope.soaupload        = false;
             }   
-        let from     = $scope.from;
-        let web_ip = (from === 'OLD') ? '172.16.161.37/agc-pms' : '172.16.170.10/PMS/';
+        });
+	}
+    $scope.viewsoa = function(data){
+        let filename    = data.file_name
+        let from        = $scope.from;
+        let web_ip      = (from === 'OLD') ? '172.16.161.37/agc-pms' : '172.16.170.10/PMS/';
         window.open(`http://${web_ip}/assets/pdf/${filename}`);
         // window.open(`${$base_url}assets/pdf/` + filename);
     }
-
-    $scope.uploadall = function()
-    {
+    $scope.uploadall = function(){
         $('#headerCheck').click(function(e) {
             $(this).closest('table').find('td input:checkbox').prop('checked', this.checked);
         });
 
-        if($("[name = 'headerCheck']").is(":checked"))
-        {
+        if($("[name = 'headerCheck']").is(":checked")){
             $scope.uploadselect = false;
-        } 
-        else
-        {
+        }else{
             $scope.uploadselect = true;
         }
     }
-
-    $scope.uploadsoa = function(data)
-    {
+    $scope.uploadsoa = function(data){
         let soaID = data.id;
-        let from     = $scope.from;
+        let from  = $scope.from;
 
         $.ajax({
             type: 'POST',
             url: `${$base_url}uploadsoadata`,
             data: {soaID : soaID, from: from},
-            beforeSend: function() 
-            {
-                 $('#loading').show();
+            beforeSend: function(){
+                $('#loading').show();
             },
             success: function(response) {
-
-             $('#loading').hide();
-
-                if(response.info == 'success')
-                {
-                 Swal.fire({
-                         icon: 'success',
-                         title: 'Success',
-                         text: response.message
+                $('#loading').hide();
+                if(response.info == 'success'){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: response.message
                     }).then((result) => {                        
                         $scope.soaupload = false;
                         $scope.soa = [];
                         $scope.getsoa();
                     });
-                }
-                else
-                {
+                }else{
                  const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -116,15 +103,11 @@ window.myApp.controller('adminsoa', function($scope, $http, $compile) {
             }
         });
     }
-
-    $scope.uploadsoaselected = function(e)
-    {
+    $scope.uploadsoaselected = function(e){
         e.preventDefault();
-
         let formdata = new FormData(e.target);
         let from     = $scope.from;
         formdata.append('from', from);
-
         $.ajax({
             type: 'POST',
             url: `${$base_url}uploadsoadatachecked`,
@@ -134,29 +117,23 @@ window.myApp.controller('adminsoa', function($scope, $http, $compile) {
             cache: false,
             contentType: false,
             processData: false,
-            beforeSend: function() 
-            {
-                 $('#loading').show();
+            beforeSend: function(){
+                $('#loading').show();
             },
             success: function(response) {
-
-             $('#loading').hide();
-
-                if(response.info == 'success')
-                {
-                 Swal.fire({
-                         icon: 'success',
-                         title: 'Success',
-                         text: response.message
+                $('#loading').hide();
+                if(response.info == 'success'){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: response.message
                     }).then((result) => {
                         $scope.soaupload = false;
                         $scope.soa = [];
                         $scope.getsoa();
                     });
-                }
-                else
-                {
-                 const Toast = Swal.mixin({
+                }else{
+                    const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
@@ -167,16 +144,13 @@ window.myApp.controller('adminsoa', function($scope, $http, $compile) {
                             toast.addEventListener('mouseleave', Swal.resumeTimer)
                         }
                     })
-
                     Toast.fire({
                         icon: 'error',
                         title: response.info,
                         text: response.message
                     })
                 }
-
             }
         });
     }
-
 })

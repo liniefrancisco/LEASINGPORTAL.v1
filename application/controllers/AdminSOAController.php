@@ -1,17 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 header('Access-Control-Allow-Origin: *');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
     header('Access-Control-Allow-Headers: Content-Type');
     exit;
 }
-
-class AdminSOAController extends CI_Controller
-{
-    function __construct()
-    {
+class AdminSOAController extends CI_Controller{
+    function __construct(){
         parent::__construct();
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
@@ -33,51 +29,40 @@ class AdminSOAController extends CI_Controller
         $this->output->set_header('Pragma: no-cache');
         $this->output->set_header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
     }
-
     # TABLE OF CONTENTS
     # PORTAL INDEX FUNCTION
-
-
-    function sanitize($string)
-    {
+    function sanitize($string){
         $string = htmlentities($string, ENT_QUOTES, 'UTF-8');
         $string = trim($string);
         return $string;
     }
-
-    function get_dateTime()
-    {
+    function get_dateTime(){
         $timestamp = time();
         $date_time = date('F j, Y g:i:s A  ', $timestamp);
         $result['current_dateTime'] = $date_time;
         echo json_encode($result);
     }
-
-    public function getsoa()
-    {
+    public function getsoa(){
         $data      = $this->input->post(NULL);
         $tenantID  = $data['store'] . '-' . $data['type'];
         $datefrom  = $data['date1'];
         $dateto    = $data['date2'];
-
-        $soa = $this->adminmodel->get_soa($tenantID, $datefrom, $dateto, $data['from']);
-
+        $soa       = $this->adminmodel->get_soa($tenantID, $datefrom, $dateto, $data['from']);
+        
         JSONResponse($soa);
     }
+    public function uploadsoadata(){
+        $this->cas  = $this->load->database('cas', true);
+        $soaID      = $this->input->post('soaID');
+        $from       = $this->input->post('from');
 
-    public function uploadsoadata()
-    {
-        $this->cas = $this->load->database('cas', true);
-        $soaID = $this->input->post('soaID');
-        $from = $this->input->post('from');
+        $url1       = 'https://leasingportal.altsportal.com/uploadSoaDataAPI';
+        $url2       = 'https://leasingportal.altsportal.com/uploadSoaFile';
+        $url3       = 'https://leasingportal.altsportal.com/notifications';
 
-        $url1     = 'https://leasingportal.altsportal.com/uploadSoaDataAPI';
-        $url2     = 'https://leasingportal.altsportal.com/uploadSoaFile';
-        $url3     = 'https://leasingportal.altsportal.com/notifications';
-
-        $msg   = array();
-        $data  = array();
-        $b     = array();
+        $msg        = array();
+        $data       = array();
+        $b          = array();
 
         $soafiledata = $this->adminmodel->getSOAFile($soaID, $from);
         $soalinedata = $this->adminmodel->getSOALine($soafiledata->soa_no, $from);
@@ -93,11 +78,11 @@ class AdminSOAController extends CI_Controller
             $b = $value['balance'];
         }
 
-        $web_ip = ($from === 'OLD') ? '172.16.161.37/agc-pms' : '172.16.170.10/PMS';
-        $filePath = "http://$web_ip/assets/pdf/" . $soafiledata->file_name;
+        $web_ip     = ($from === 'OLD') ? '172.16.161.37/agc-pms' : '172.16.170.10/PMS';
+        $filePath   = "http://$web_ip/assets/pdf/" . $soafiledata->file_name;
 
-        $type = ($from === 'OLD') ? 'db' : 'cas';
-        $b64Doc   = chunk_split(base64_encode(file_get_contents($filePath)));
+        $type       = ($from === 'OLD') ? 'db' : 'cas';
+        $b64Doc     = chunk_split(base64_encode(file_get_contents($filePath)));
 
         if (!empty($soafiledata)) {
             if ($this->isDomainAvailable('leasingportal.altsportal.com')) {
@@ -108,16 +93,14 @@ class AdminSOAController extends CI_Controller
 
                 if ($soaData == 'success') {
                     $soaFile = $this->sendData($url2, array('pdfB64' => $b64Doc, 'file_name' => $soafiledata->file_name));
-
                     if ($soaFile == 'PDF Saved') {
                         $data    = array('soa_file' => $soafiledata, 'balance' => $b, 'previous' => $previousAmount->amount_payable, 'tenant' => $tenant);
                         $soaData = $this->sendData($url3, $data);
 
-                        $update =
-                            [
-                                'upload_status' => 'Uploaded',
-                                'upload_date'   => date('Y-m-d')
-                            ];
+                        $update = [
+                                    'upload_status' => 'Uploaded',
+                                    'upload_date'   => date('Y-m-d')
+                                ];
 
                         $this->{$type}->where('id', $soafiledata->id);
                         $this->{$type}->update('soa_file', $update);
@@ -158,79 +141,68 @@ class AdminSOAController extends CI_Controller
 
         JSONResponse($msg);
     }
-
-    public function uploadsoadatachecked()
-    {
-        $data        = $this->input->post(NULL);
-        $msg         = array();
-        $b           = array();
-        $b64Doc      = '';
-        $soaData     = '';
-        $soaFile     = '';
-        $count       = count($data['soacheck']);
-        $uploadCheck = $data['soacheck'];
-
+    public function uploadsoadatachecked(){//Updated by Linie
+        $data           = $this->input->post(NULL);
+        $msg            = array();
+        $b              = array();
+        $b64Doc         = '';
+        $soaData        = '';
+        $soaFile        = '';
+        $count          = count($data['soacheck']);
+        $uploadCheck    = $data['soacheck'];
+        $from           = isset($data['from']) ? $data['from'] : '';//Added by Linie
+        $this->cas      = $this->load->database('cas', true);//Added by Linie
+        $type           = ($from === 'OLD') ? 'db' : 'cas';//Added by Linie
         # PORTAL URLs
-        $url1     = 'https://leasingportal.altsportal.com/uploadSoaDataAPI';
-        $url2     = 'https://leasingportal.altsportal.com/uploadSoaFile';
-        $url3     = 'https://leasingportal.altsportal.com/notifications';
-
-        $testing  = 'https://leasingportal.altsportal.com/testingUpload1';
-
-        $update = ['upload_status' => 'Uploaded', 'upload_date'   => date('Y-m-d')];
+        $url1           = 'https://leasingportal.altsportal.com/uploadSoaDataAPI';
+        $url2           = 'https://leasingportal.altsportal.com/uploadSoaFile';
+        $url3           = 'https://leasingportal.altsportal.com/notifications';
+        $update         = ['upload_status' => 'Uploaded', 'upload_date'   => date('Y-m-d')];
 
         if (!empty($data['soacheck'])) {
             for ($i = 0; $i < $count; $i++) {
-                $soafiledata = $this->adminmodel->getSOAFile($uploadCheck[$i], $data['from']);
-                $soalinedata = $this->adminmodel->getSOALine($soafiledata->soa_no, $data['from']);
-                $tenant      = $this->basemodel->getTenant($soafiledata->tenant_id, $data['from']);
-
-                $balance        = $this->ledgermodel->get_forwarded_balance($soafiledata->tenant_id, $soafiledata->posting_date, $data['from']);
-                $previousAmount = $this->adminmodel->getPreviousBalance($soafiledata->posting_date, $soafiledata->tenant_id, $data['from']);
-
+                $soafiledata    = $this->adminmodel->getSOAFile($uploadCheck[$i], $from);
+                $soalinedata    = $this->adminmodel->getSOALine($soafiledata->soa_no, $from);
+                $tenant         = $this->basemodel->getTenant($soafiledata->tenant_id, $from);
+                $balance        = $this->ledgermodel->get_forwarded_balance($soafiledata->tenant_id, $soafiledata->posting_date, $from);
+                $previousAmount = $this->adminmodel->getPreviousBalance($soafiledata->posting_date, $soafiledata->tenant_id, $from);
                 foreach ($balance as $value) {
                     $b = $value['balance'];
                 }
-
-                $web_ip = ($data['from'] === 'OLD') ? '172.16.161.37/agc-pms' : '172.16.170.10/PMS';
-                $filePath = "http://$web_ip/assets/pdf/" . $soafiledata->file_name;
-
+                $web_ip         = ($from === 'OLD') ? '172.16.161.37/agc-pms' : '172.16.170.10/PMS';
+                $filePath       = "http://$web_ip/assets/pdf/" . $soafiledata->file_name;
                 if (!file_exists($filePath)) {
-                    $b64Doc = chunk_split(base64_encode(file_get_contents($filePath)));
+                    $b64Doc     = chunk_split(base64_encode(file_get_contents($filePath)));
                 } else {
-                    $b64Doc = '';
+                    $b64Doc     = '';
                 }
 
                 if (!empty($soafiledata)) {
                     if ($this->isDomainAvailable('leasingportal.altsportal.com')) {
-
                         # SOA LINE AND SOA FILE UPLOAD
                         $data    = array('soa_file' => $soafiledata, 'soa_line' => $soalinedata, 'tenant' => $tenant);
                         $soaData = $this->sendData($url1, $data);
                         $soaFile = $this->sendData($url2, array('pdfB64' => $b64Doc, 'file_name' => $soafiledata->file_name));
-
                         # SOA SMS AND EMAIL
                         $data    = array('soa_file' => $soafiledata, 'balance' => $b, 'previous' => $previousAmount->amount_payable, 'tenant' => $tenant);
                         $soaData = $this->sendData($url3, $data);
 
-                        $this->db->trans_start();
-                        $this->db->where('id', $soafiledata->id);
-                        $this->db->update('soa_file', $update);
-
+                        $this->{$type}->trans_start();
+                        $this->{$type}->where('id', $soafiledata->id);
+                        $this->{$type}->update('soa_file', $update);
                         if (isset($soalinedata)) {
                             foreach ($soalinedata as $value) {
-                                $this->db->where('id', $value['id']);
-                                $this->db->update('soa_line', $update);
+                                $this->{$type}->where('id', $value['id']);
+                                $this->{$type}->update('soa_line', $update);
                             }
                         }
+                        $this->{$type}->trans_complete();
 
-                        $this->db->trans_complete();
-
-                        if ($this->db->trans_status() === FALSE) {
-                            $this->db->trans_rollback();
-                            $this->saveLog('SOA', $soafiledata->soa_no, $soafiledata->tenant_id, 'error', 'Uploaded Failed');
+                        if ($this->{$type}->trans_status() === FALSE) {
+                            $this->{$type}->trans_rollback();
+                            $this->saveLog('SOA', $soafiledata->soa_no, $soafiledata->tenant_id, 'error', 'Uploaded Failed', $type);
                         } else {
-                            $this->saveLog('SOA', $soafiledata->soa_no, $soafiledata->tenant_id, 'success', 'Uploaded Successfully');
+                            $this->saveLog('SOA', $soafiledata->soa_no, $soafiledata->tenant_id, 'success', 'Uploaded Successfully', $type);
                             continue;
                         }
                     } else {
@@ -240,52 +212,38 @@ class AdminSOAController extends CI_Controller
                     $msg = ['message' => 'Error, It seems there are no data found to be uploaded, Please try again.', 'info' => 'error'];
                 }
             }
-
             $msg = ['message' => 'SOA Data Uploaded Successfully.', 'info' => 'success'];
         } else {
-
             $msg = ['message' => 'Please Check any SOA to upload.', 'info' => 'error'];
         }
-
         JSONResponse($msg);
     }
-
-    public function saveLog($type, $docno, $tenant_id, $status, $statusMessage)
-    {
-        $data   =
-            [
-                'type_uploaded'  => $type,
-                'tenant_id'      => $tenant_id,
-                'upload_status'  => $status,
-                'status_message' => $statusMessage,
-                'date_uploaded'  => date('Y-m-d'),
-                'user_id'        => $this->session->userdata('id')
-            ];
-
-        $this->db->trans_start();
-
-        $this->db->insert('upload_log', $data);
-        $uploadlogID = $this->db->insert_id();
-
-        if ($status === 'success') {
-            $docs =
-                [
+    public function saveLog($soa, $docno, $tenant_id, $status, $statusMessage, $type){//Updated by linie
+        $data = [
+            'type_uploaded'  => $soa,
+            'doc_no'         => $docno,
+            'tenant_id'      => $tenant_id,
+            'upload_status'  => $status,
+            'status_message' => $statusMessage,
+            'date_uploaded'  => date('Y-m-d'),
+            'user_id'        => $this->session->userdata('id')
+        ];
+        $this->{$type}->trans_start();
+            $this->{$type}->insert('upload_log', $data);
+            $uploadlogID    = $this->{$type}->insert_id();
+            if ($status === 'success') {
+                $docs = [
                     'uploadlogID' => $uploadlogID,
                     'documentno'  => $docno
                 ];
-
-            $this->db->insert('upload_log_docs', $docs);
-        }
-
-        $this->db->trans_complete();
-
-        if ($this->db->trans_status() === 'FALSE') {
-            $this->db->trans_rollback();
+                $this->{$type}->insert('upload_log_docs', $docs);;
+            }
+        $this->{$type}->trans_complete();
+        if ($this->{$type}->trans_status() === FALSE) {
+            $this->{$type}->trans_rollback();
         }
     }
-
-    public function isDomainAvailable($domain)
-    {
+    public function isDomainAvailable($domain){
         $file = @fsockopen($domain, 80); #@fsockopen is used to connect to a socket
 
         # Verify whether the internet is working or not
@@ -295,9 +253,7 @@ class AdminSOAController extends CI_Controller
             return false;
         }
     }
-
-    public function sendData($url, $data)
-    {
+    public function sendData($url, $data){
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);

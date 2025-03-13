@@ -1,17 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 header('Access-Control-Allow-Origin: *');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
     header('Access-Control-Allow-Headers: Content-Type');
     exit;
 }
-
-class AdminController extends CI_Controller
-{
-    function __construct()
-    {
+class AdminController extends CI_Controller{
+    function __construct(){
         parent::__construct();
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
@@ -33,27 +29,20 @@ class AdminController extends CI_Controller
         $this->output->set_header('Pragma: no-cache');
         $this->output->set_header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
     }
-
     # TABLE OF CONTENTS
     # PORTAL INDEX FUNCTION
-
-    function sanitize($string)
-    {
+    function sanitize($string){
         $string = htmlentities($string, ENT_QUOTES, 'UTF-8');
         $string = trim($string);
         return $string;
     }
-
-    function get_dateTime()
-    {
+    function get_dateTime(){
         $timestamp = time();
         $date_time = date('F j, Y g:i:s A  ', $timestamp);
         $result['current_dateTime'] = $date_time;
         echo json_encode($result);
     }
-
-    public function admindashboard()
-    {
+    public function admindashboard(){
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Dashboard';
             $data['status'] = 'admindashboard';
@@ -66,9 +55,7 @@ class AdminController extends CI_Controller
             $this->load->view('leasingportal/Login');
         }
     }
-
-    public function admininvoicepertenant()
-    {
+    public function admininvoicepertenant(){
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Invoice Upload';
             $data['status'] = 'admininvoiceupload';
@@ -81,9 +68,7 @@ class AdminController extends CI_Controller
             $this->load->view('leasingportal/Login');
         }
     }
-
-    public function adminsoa()
-    {
+    public function adminsoa(){
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin SOA Upload';
             $data['status'] = 'adminsoaupload';
@@ -97,9 +82,7 @@ class AdminController extends CI_Controller
             $this->load->view('leasingportal/Login');
         }
     }
-
-    public function paymentpertenant()
-    {
+    public function paymentpertenant(){
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Payment Upload';
             $data['status'] = 'adminpaymentupload';
@@ -113,9 +96,7 @@ class AdminController extends CI_Controller
             $this->load->view('leasingportal/Login');
         }
     }
-
-    public function paymentperstore()
-    {
+    public function paymentperstore(){
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Payment Upload';
             $data['status'] = 'adminpaymentupload';
@@ -129,9 +110,7 @@ class AdminController extends CI_Controller
             $this->load->view('leasingportal/Login');
         }
     }
-
-    public function uploadinghistory()
-    {
+    public function uploadinghistory(){
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Uploading History';
             $data['status'] = 'adminuploadinghistory';
@@ -145,10 +124,7 @@ class AdminController extends CI_Controller
             $this->load->view('leasingportal/Login');
         }
     }
-
-
-    public function paymentnotices()
-    {
+    public function paymentnotices(){
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Payment Advice';
             $data['status'] = 'adminupaymentadvice';
@@ -162,9 +138,7 @@ class AdminController extends CI_Controller
             $this->load->view('leasingportal/Login');
         }
     }
-
-    public function paymentnoticeshistory()
-    {
+    public function paymentnoticeshistory(){
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Payment Advice History';
             $data['status'] = 'adminupaymentadvicehistory';
@@ -178,9 +152,7 @@ class AdminController extends CI_Controller
             $this->load->view('leasingportal/Login');
         }
     }
-
-    public function adminusers()
-    {
+    public function adminusers(){
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Users';
             $data['status'] = 'adminusers';
@@ -194,9 +166,7 @@ class AdminController extends CI_Controller
             $this->load->view('leasingportal/Login');
         }
     }
-
-    public function blastUser()
-    {
+    public function blastUser(){
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Blast';
             $data['status'] = 'adminblast';
@@ -210,8 +180,7 @@ class AdminController extends CI_Controller
             $this->load->view('leasingportal/Login');
         }
     }
-    public function deletesoa()
-    {
+    public function deletesoa(){
         if ($this->session->userdata('portal_logged_in')) {
             $data['title'] = 'Admin Delete SOA';
             $data['status'] = 'admindeletesoa';
